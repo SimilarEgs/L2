@@ -1,6 +1,23 @@
 // Что выведет программа? Объяснить вывод программы. Объяснить как работают defer’ы и их порядок вызовов.
 
-// 
+// Ответ:
+// 1
+// 2
+//
+// Почему:
+// В документации языка сказано:
+// «A defer statement pushes a function call onto a list. The list of saved calls is executed after the surrounding function returns».
+// «Deferred functions may read and assign to the returning function's named return values».
+//
+// Функция: test()
+// В сигнатуре функции test() мы возвращаем именованное значение.
+// Далее создаем анонимную функцию, которая заинкременит возвращаемое значение на 1, то есть в сумме мы вернем x = 2.
+// Мы так же используем «голый» return, который возвращает наше именованное значение, т.к мы явно указали это в сигнатуре.
+// «Naked returns don’t offer any technically unique feature, they are syntactic saccharin that harms readability. It’s ok to be a prude and say no to naked returns».
+//
+// Функция: anotherTest()
+// Здесь, в свою очередь, мы таким же образом инкрементим x, но т.к именованное значение отсутствует
+// на конечный результат возвращаемого x это не повлияет
 
 package main
 
@@ -15,6 +32,7 @@ func test() (x int) {
 	x = 1
 	return
 }
+
 func anotherTest() int {
 	var x int
 	defer func() {
@@ -27,8 +45,3 @@ func main() {
 	fmt.Println(test())
 	fmt.Println(anotherTest())
 }
-
-// В первом случае будет выведено число 2, во втором случае 1. defer работает таким образом, что стэк вызовов отложенных функций выполняется после оператора return В итоге:
-// первая функция имеет именнованное поле для вывода результата, с которым сможет работать defer, во втором случае переменная x существует только внутри функции и после
-// return становится недостижимой для изменения отложенной функцией, поскольку defer будет работать уже с ее копией
-//
