@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"sort"
+	"strconv"
 	"strings"
 )
 
@@ -33,7 +35,8 @@ const (
 	errArgs = "[Error] check for argument correctnes"
 )
 
-type Args struct {
+// representation of CLI args
+type args struct {
 	k          int
 	n, r, u, c bool
 
@@ -43,17 +46,107 @@ type Args struct {
 
 func main() {
 
+	data, err := Sort()
+	if err != nil {
+		log.Fatalln(err)
+	}
+	if len(data) > 1 {
+		for _, elem := range data {
+			fmt.Println(elem)
+		}
+	}
+}
+
+// Sort function - reads name of the input and output file from the cli, scans provided flags, sorts data with corresponding method based on the flags
+// and write the result to the otput file
+func Sort() ([][]string, error) {
+
 	args, err := getFlags()
 	if err != nil {
-		log.Println(err)
-		return
+		return nil, err
 	}
-	fmt.Println(args)
+
+	data, err := readFile(args.inputFilename)
+	if err != nil {
+		return nil, err
+	}
+
+	// representation of sort function for sort.Slice method
+	var sortFunc func(i, j int) bool
+
+	switch true {
+	// digits sort
+	case args.n:
+		sortFunc = func(i, j int) bool {
+			a, _ := strconv.ParseFloat(getElem(data, i, args.k), 64)
+			b, _ := strconv.ParseFloat(getElem(data, j, args.k), 64)
+			if args.r { // reverse sorting
+				return a > b
+			}
+			return a < b
+		}
+
+	// returns only unique output
+	case args.u:
+		res := make([][]string, 0, 10)
+
+		tmp := make([]string, 0, 10)
+		set := make(map[string]bool)
+
+		for _, v := range data {
+			tmp = append(tmp, v...)
+		}
+
+		for _, elem := range tmp {
+
+			var words []string
+
+			if _, ok := set[elem]; !ok {
+				words = strings.Split(elem, " ")
+				set[elem] = true
+				res = append(res, words)
+			}
+		}
+
+		writeFile(res, args.outputFilename)
+		return res, nil
+
+	// basic sort
+	default:
+		sortFunc = func(i, j int) bool {
+			if args.r {
+				return getElem(data, i, args.k) > getElem(data, j, args.k)
+			}
+			return getElem(data, i, args.k) < getElem(data, j, args.k)
+		}
+	}
+
+	// check if input data is sorted
+	if args.c {
+		sorted := sort.SliceIsSorted(data, sortFunc)
+		log.Printf("[Info] sorting status: %t\n", sorted)
+		return nil, nil
+	}
+
+	sort.Slice(data, sortFunc)
+
+	writeFile(data, args.outputFilename)
+
+	return data, nil
 
 }
 
-//  SetFlags function - scans cli flags and sets return «Args» struct with corresponding provided flags for further use of sort
-func getFlags() (*Args, error) {
+// getElem func - returns an element of 2d slice by the given argument
+func getElem(data [][]string, i, k int) string {
+	if k < len(data[i]) {
+
+		return data[i][k]
+	}
+	return ""
+}
+
+// SetFlags function - scans cli flags and sets return «Args» struct with corresponding provided flags for further use of sort
+func getFlags() (*args, error) {
 
 	n := flag.Bool("n", false, "sorting on digits")
 	c := flag.Bool("c", false, "check if the data is sorted")
@@ -63,7 +156,7 @@ func getFlags() (*Args, error) {
 
 	flag.Parse()
 
-	args := &Args{
+	args := &args{
 		k: *k,
 		n: *n,
 		r: *r,
@@ -87,7 +180,7 @@ func getFlags() (*Args, error) {
 
 }
 
-// ReadLines function - take filename as args, read whole file and returns two-dimensional slice (columns and lines)
+// ReadFile function - take filename as args, read whole file and returns two-dimensional slice (columns and lines)
 func readFile(fileName string) (res [][]string, err error) {
 
 	f, err := os.Open(fileName)
@@ -104,7 +197,7 @@ func readFile(fileName string) (res [][]string, err error) {
 		var words []string
 
 		words = strings.Split(scaner.Text(), " ") // split words by columns
-		res = append(res, words)                  // append splited slice
+		res = append(res, words)
 
 	}
 	return res, err
@@ -115,7 +208,7 @@ func readFile(fileName string) (res [][]string, err error) {
 func writeFile(input [][]string, fileName string) error {
 
 	// create new-file and name it with provided fileName
-	file, err := os.Create(fileName + ".txt")
+	file, err := os.Create(fileName)
 	if err != nil {
 		return err
 	}
