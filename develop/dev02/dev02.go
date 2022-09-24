@@ -1,15 +1,3 @@
-package main
-
-import (
-	"bytes"
-	"errors"
-	"fmt"
-	"log"
-	"regexp"
-	"strconv"
-	"strings"
-)
-
 // Задача на распаковку
 // Создать Go функцию, осуществляющую примитивную распаковку строки, содержащую повторяющиеся символы / руны, например:
 // 	- "a4bc2d5e" => "aaaabccddddde"
@@ -27,6 +15,18 @@ import (
 // golint - pass
 // tests - pass
 // additional tasks - failed
+
+package main
+
+import (
+	"bytes"
+	"errors"
+	"fmt"
+	"log"
+	"regexp"
+	"strconv"
+	"strings"
+)
 
 func main() {
 

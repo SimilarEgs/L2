@@ -1,17 +1,3 @@
-package main
-
-import (
-	"bufio"
-	"errors"
-	"flag"
-	"fmt"
-	"log"
-	"os"
-	"sort"
-	"strconv"
-	"strings"
-)
-
 // Утилита sort
 // Отсортировать строки в файле по аналогии с консольной утилитой sort (man sort — смотрим описание и основные параметры): на входе подается файл из несортированными строками, на выходе — файл с отсортированными.
 //
@@ -30,6 +16,19 @@ import (
 // -b — игнорировать хвостовые пробелы
 // -c — проверять отсортированы ли данные
 // -h — сортировать по числовому значению с учетом суффиксов
+package main
+
+import (
+	"bufio"
+	"errors"
+	"flag"
+	"fmt"
+	"log"
+	"os"
+	"sort"
+	"strconv"
+	"strings"
+)
 
 const (
 	errArgs = "[Error] check for argument correctnes"
