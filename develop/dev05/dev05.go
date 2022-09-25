@@ -14,30 +14,119 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"errors"
 	"flag"
 	"fmt"
 	"log"
 	"os"
+	"regexp"
 	"strings"
 )
 
+const (
+	errArg = "[Error] check for argument correctnes"
+)
+
+// Args struct - representation of grep arguments
 type Args struct {
 	A, B, C       int
 	c, i, v, F, n bool
 
 	search string
-	files  []string
+	file   string
 }
 
+// grep func - main logic of the proggram. Inside, calls all the subfunctions (getArgs, readFile)
+// and perform required computation to find coresponding patterns inside provided file
+func grep() error {
+
+	args, err := getArgs()
+	if err != nil {
+		return err
+	}
+
+	rowsIndex := make([]int, 0, 10)
+
+	rows, err := readFile(args.file)
+	if err != nil {
+		return err
+	}
+
+	for i, v := range rows {
+
+		// flag -i "ignore-case"
+		if args.i {
+			v = strings.ToLower(v)
+		}
+
+		// flag -F "fixed"
+		if args.F {
+			if strings.Contains(v, args.search) {
+				rowsIndex = append(rowsIndex, i)
+			}
+			// regular search by line
+		} else {
+			match, err := regexp.MatchString(args.search, v)
+			if err != nil {
+				continue
+			}
+
+			// if provided pattern matches the value of current loop iteration,
+			// append rowsIndedx with corresponding line index
+			if match {
+				rowsIndex = append(rowsIndex, i)
+			}
+
+		}
+	}
+
+	// flag -n "line num"
+	if args.n {
+
+		res := make([]string, len(rows))
+
+		for i := range rows {
+			nLine := bytes.Buffer{}
+
+			number := fmt.Sprintf("%d", i+1)
+			nLine.Grow(len(number) + 1 + len(rows[i]))
+
+			// formating lines with coresponding number
+			nLine.WriteString(number)
+			nLine.WriteString(":")
+			nLine.WriteString(rows[i])
+
+			res[i] = nLine.String()
+
+		}
+		rows = res
+	}
+
+	// flag -c "count"
+	if args.c {
+		fmt.Printf("[Info] count of matches: %d\n", len(rowsIndex))
+		return nil
+	}
+
+	// flag -v "invert"
+	if args.v {
+
+	}
+
+	return nil
+
+}
+
+// getArgs func - scans grep flags and returns corresponding struct with entered args
 func getArgs() (*Args, error) {
 
-	A := flag.Int("A", 0, "Print NUM lines of trailing context after matching lines")
-	B := flag.Int("B", 0, "Print NUM lines of leading context before matching lines")
-	C := flag.Int("C", 0, "Print NUM lines of output context")
-	c := flag.Bool("c", false, "Suppress normal output; instead print a count of matching lines for each input file")
+	A := flag.Int("A", 0, "Print NUM rows of trailing context after matching rows")
+	B := flag.Int("B", 0, "Print NUM rows of leading context before matching rows")
+	C := flag.Int("C", 0, "Print NUM rows of output context")
+	c := flag.Bool("c", false, "Suppress normal output; instead print a count of matching rows for each input file")
 	i := flag.Bool("i", false, "Ignore case distinctions in both the PATTERN and the input files")
-	v := flag.Bool("v", false, "Invert the sense of matching, to select non-matching lines")
+	v := flag.Bool("v", false, "Invert the sense of matching, to select non-matching rows")
 	F := flag.Bool("F", false, "Interpret PATTERN as a list of fixed strings")
 	n := flag.Bool("n", false, "Prefix each line of output with the line number within its input file")
 
@@ -56,7 +145,7 @@ func getArgs() (*Args, error) {
 
 	// throw an error if cli args are empty
 	if len(flag.Args()) < 1 {
-		return nil, errors.New("[Error] check for argument correctnes")
+		return nil, errors.New(errArg)
 	}
 
 	search := flag.Args()[0]
@@ -68,7 +157,7 @@ func getArgs() (*Args, error) {
 		args.search = search
 	}
 
-	args.files = append(args.files, flag.Args()[1:]...)
+	args.file = flag.Args()[1]
 
 	return args, nil
 
@@ -102,10 +191,9 @@ func readFile(fileName string) ([]string, error) {
 }
 
 func main() {
-	args, err := getArgs()
+
+	err := grep()
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	fmt.Println(args.files)
 }
