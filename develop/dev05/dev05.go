@@ -65,7 +65,7 @@ func grep() error {
 			if strings.Contains(v, args.search) {
 				rowsIndex = append(rowsIndex, i)
 			}
-			// regular search by line
+			// if flag not specified, find all lines that match the pattern(«args.search»)
 		} else {
 			match, err := regexp.MatchString(args.search, v)
 			if err != nil {
@@ -92,11 +92,12 @@ func grep() error {
 			number := fmt.Sprintf("%d", i+1)
 			nLine.Grow(len(number) + 1 + len(rows[i]))
 
-			// formating lines with coresponding number
+			// adding line number to the buffer
 			nLine.WriteString(number)
 			nLine.WriteString(":")
 			nLine.WriteString(rows[i])
 
+			// write resualt
 			res[i] = nLine.String()
 
 		}
@@ -111,11 +112,48 @@ func grep() error {
 
 	// flag -v "invert"
 	if args.v {
+		for i := 0; i < len(rows); i++ {
 
+			// func for checking line index => if true, return «false» and do not output matched line index
+			match := func(rowsIndex []int, index int) bool {
+				for i := 0; i < len(rowsIndex); i++ {
+					if index == rowsIndex[i] {
+						return false
+					}
+				}
+				return true
+			}(rowsIndex, i)
+
+			if match {
+				fmt.Println(rows[i])
+			}
+		}
+	}
+
+	if args.C > 0 {
+
+	}
+
+	indexes := getIndexes(rowsIndex)
+
+	// if flags was not specified print all lines that matches pattern
+	for i := range rows {
+		if indexes[i] {
+			fmt.Println(rows[i])
+		}
 	}
 
 	return nil
 
+}
+
+// getIndex func - returns map filled with indexes of all matching lines
+func getIndexes(rowsIndex []int) map[int]bool {
+	indexes := make(map[int]bool)
+	for _, v := range rowsIndex {
+		indexes[v] = true
+	}
+	return indexes
 }
 
 // getArgs func - scans grep flags and returns corresponding struct with entered args
