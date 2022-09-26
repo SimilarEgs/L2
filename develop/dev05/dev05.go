@@ -130,13 +130,55 @@ func grep() error {
 		}
 	}
 
-	if args.C > 0 {
-
-	}
-
 	indexes := getIndexes(rowsIndex)
 
-	// if flags was not specified print all lines that matches pattern
+	// flac -C "context" - print ±N lines between contiguous groups of matches
+	if args.C > 0 {
+		args.B = args.C
+		args.A = args.C
+	}
+
+	// flac -A "after" - print ±N lines affter contiguous groups of matches
+	if args.A > 0 {
+		numA := args.A
+		newIndexes := make(map[int]bool, len(indexes))
+
+		for i := range indexes {
+			newIndexes[i] = true
+		}
+
+		// traverse through the matched indexes, add the number of provided lines affter
+		for key := range indexes {
+			for i := key; i < key+numA+1 && i < len(rows); i++ {
+				if !indexes[i] {
+					newIndexes[i] = true
+				}
+			}
+		}
+		indexes = newIndexes
+	}
+
+	// flac -B "before" - print ±N lines before contiguous groups of matches
+	if args.B > 0 {
+		numB := args.B
+		newIndexes := make(map[int]bool, len(indexes))
+
+		for i := range indexes {
+			newIndexes[i] = true
+		}
+
+		// traverse through the matched indexes, add the number of provided lines before
+		for key := range indexes {
+			for i := key; i > key-numB-1 && i < len(rows); i-- { // same logic, but in reverse order
+				if !indexes[i] {
+					newIndexes[i] = true
+				}
+			}
+		}
+		indexes = newIndexes
+	}
+
+	// prints all lines that matches entered pattern
 	for i := range rows {
 		if indexes[i] {
 			fmt.Println(rows[i])
