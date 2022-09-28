@@ -82,6 +82,12 @@ func main() {
 			line += "\n"
 			fmt.Println(line)
 		case "cd":
+			if len(args) < 1 {
+				err := errors.New("check for argument correctnes")
+				log.Printf("[Error] %v\n\n", err)
+				continue
+			}
+
 			path := args[0]
 			err := os.Chdir(path)
 			if err != nil {
@@ -105,20 +111,6 @@ func main() {
 			// fmt.Println()
 
 			// V2========================================
-			processList, err := ps.Processes()
-			if err != nil {
-				log.Printf("[Error] %v\n\n", err)
-				continue
-			}
-
-			fmt.Printf("PID\tNAME\n")
-
-			for x := range processList {
-				var process ps.Process
-				process = processList[x]
-				fmt.Printf("%d\t%s\n", process.Pid(), process.Executable())
-			}
-			// V3========================================
 			// process, err := process.Processes()
 			// if err != nil {
 			// 	log.Printf("[Error] %v\n\n", err)
@@ -133,6 +125,21 @@ func main() {
 			// 	}
 			// 	fmt.Printf("%d\t%s\n", ps.Pid, psName)
 			// }
+
+			// V3========================================
+			processList, err := ps.Processes()
+			if err != nil {
+				log.Printf("[Error] %v\n\n", err)
+				continue
+			}
+
+			fmt.Printf("PID\tNAME\n")
+
+			for x := range processList {
+				var process ps.Process
+				process = processList[x]
+				fmt.Printf("%d\t%s\n", process.Pid(), process.Executable())
+			}
 			fmt.Println()
 		case "kill":
 			if len(args) < 1 {
