@@ -19,15 +19,6 @@
 
 package main
 
-// "bufio"
-// "fmt"
-// "log"
-// "os"
-// "os/exec"
-// "path/filepath"
-// "strconv"
-// "strings"
-
 import (
 	"bufio"
 	"errors"
