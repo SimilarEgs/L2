@@ -34,6 +34,26 @@
 
 package main
 
+import (
+	"dev11/config"
+	"dev11/internal/app"
+	"dev11/internal/repository"
+	"log"
+)
+
 func main() {
+
+	config, err := config.ParseConfig()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	server := app.Server{Events: *repository.NewEventStorage()}
+
+	server.Run(config)
+
+	if err != nil {
+		log.Fatal(err)
+	}
 
 }
