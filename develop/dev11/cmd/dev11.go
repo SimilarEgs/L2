@@ -35,17 +35,31 @@
 package main
 
 import (
-	"dev11/config"
-	"fmt"
+	"dev11/internal/models"
+	"dev11/internal/repository"
 	"log"
+	"time"
 )
 
 func main() {
 
-	c, err := config.ParseConfig()
+	event := repository.NewEventStorage()
+
+	event1 := models.Event{1, 100, "First", models.Date{time.Now()}}
+	time.Sleep(500 * time.Millisecond)
+	event2 := models.Event{2, 100, "Second", models.Date{time.Now()}}
+	time.Sleep(500 * time.Millisecond)
+	event3 := models.Event{3, 300, "Third", models.Date{time.Now()}}
+
+	event.CreateEvent(&event1)
+	event.CreateEvent(&event2)
+	event.CreateEvent(&event3)
+
+	time, _ := time.Parse("2006-01-02", "2022-09-30")
+
+	_, err := event.GetEvenstForDay(100, time)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(c)
 
 }
