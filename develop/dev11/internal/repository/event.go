@@ -82,7 +82,61 @@ func (e *EventStorage) DeleteEvent(eventID int) error {
 }
 
 // getEvenstForDay func - returns all events in the event storage that match the given date(day)
-func (e *EventStorage) GetEvenstForDay(userId int, date time.Time) ([]models.Event, error) {
+func (e *EventStorage) GetEvenstForDay(userId int, date int) ([]models.Event, error) {
+
+	// res - store all resualt events
+	res := make([]models.Event, 0)
+
+	// protect for concurrent read access
+	e.RLock()
+	defer e.RUnlock()
+
+	// traversing through all user events -> append all matching events to res
+	for _, event := range e.events {
+		_, _, day := event.Date.Date()
+		if event.UserID == userId && day == date {
+			res = append(res, event)
+		}
+	}
+
+	// checking for 0 case
+	if len(res) == 0 {
+		return nil, fmt.Errorf("[Info] result was not found for the entered day")
+	}
+
+	return res, nil
+}
+
+// getEvenstForDay func - returns all events in the event storage that match the given date(week)
+func (e *EventStorage) GetEvenstForWeek(userId int, date time.Time) ([]models.Event, error) {
+
+	// res - store all resualt events
+	res := make([]models.Event, 0)
+
+	inputYear, inputWeek := date.ISOWeek()
+
+	// protect for concurrent read access
+	e.RLock()
+	defer e.RUnlock()
+
+	// traversing through all user events -> append all matching events to res
+	for _, event := range e.events {
+		year, month := event.Date.ISOWeek()
+		if event.UserID == userId && year == inputYear && month == inputWeek {
+			res = append(res, event)
+		}
+	}
+
+	// checking for 0 case
+	if len(res) == 0 {
+		return nil, fmt.Errorf("[Info] result was not found for the entered week")
+	}
+
+	return res, nil
+}
+
+// getEvenstForDay func - returns all events in the event storage that match the given date(month)
+func (e *EventStorage) GetEvenstForMonth(userId int, date time.Month) ([]models.Event, error) {
 
 	// res - store all resualt events
 	res := make([]models.Event, 0)
@@ -93,15 +147,15 @@ func (e *EventStorage) GetEvenstForDay(userId int, date time.Time) ([]models.Eve
 
 	// traversing  through all user events -> append all matching events to res
 	for _, event := range e.events {
-		_, _, day := event.Date.Date()
-		if event.UserID == userId && day == date.Day() {
+		_, month, _ := event.Date.Date()
+		if event.UserID == userId && month == date {
 			res = append(res, event)
 		}
 	}
 
 	// checking for 0 case
 	if len(res) == 0 {
-		return nil, fmt.Errorf("[Info] result was not found for the entered day")
+		return nil, fmt.Errorf("[Info] result was not found for the entered month")
 	}
 
 	return res, nil

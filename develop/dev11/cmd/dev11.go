@@ -27,39 +27,13 @@
 // В случае остальных ошибок сервер должен возвращать HTTP 500.
 // Web-сервер должен запускаться на порту указанном в конфиге и выводить в лог каждый обработанный запрос.
 
-// 1. Создадай модели бизнеслогики
-// 2. Валидация моедлей
-// 3. Создать функции API
+// 1. Создадай модели бизнеслогики - готово
+// 2. Валидация моедлей - готово
+// 3. Создать функции API - в процессе
 // 4. Мидлвейр для логирования запросов
 
 package main
 
-import (
-	"dev11/internal/models"
-	"dev11/internal/repository"
-	"log"
-	"time"
-)
-
 func main() {
-
-	event := repository.NewEventStorage()
-
-	event1 := models.Event{1, 100, "First", models.Date{time.Now()}}
-	time.Sleep(500 * time.Millisecond)
-	event2 := models.Event{2, 100, "Second", models.Date{time.Now()}}
-	time.Sleep(500 * time.Millisecond)
-	event3 := models.Event{3, 300, "Third", models.Date{time.Now()}}
-
-	event.CreateEvent(&event1)
-	event.CreateEvent(&event2)
-	event.CreateEvent(&event3)
-
-	time, _ := time.Parse("2006-01-02", "2022-09-30")
-
-	_, err := event.GetEvenstForDay(100, time)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 }
