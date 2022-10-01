@@ -2,31 +2,29 @@ package app
 
 import (
 	"dev11/config"
-	"dev11/internal/repository"
 	"net/http"
 )
 
-// inject event methods (prolly a bad example of clean architecture)
 type Server struct {
-	Events repository.EventStorage
+	server *http.Server
+	cfg config.Config
+}
+
+// NewServer func -
+func NewServer(config *config.Config) *Server {
+	return &Server{cfg: *config}
 }
 
 // Run func - runs http.server based on received config
-func (srv *Server) Run(cfg *config.Config) error {
+func (s *Server) Run() error {
 
-	// representation of http.Server
-	server := &http.Server{
-		Addr:         cfg.Host + ":" + cfg.Port,
-		Handler:      srv.NewRouter(),
-		ReadTimeout:  cfg.ReadTimeout,
-		WriteTimeout: cfg.WriteTimeout,
+	// adjusting server settings via provided config
+	s.server = &http.Server{
+		Addr:         s.cfg.Host + ":" + s.cfg.Port,
+		ReadTimeout:  s.cfg.ReadTimeout,
+		WriteTimeout: s.cfg.WriteTimeout,
 	}
 
-	// run http server
-	err := server.ListenAndServe()
-	if err != nil {
-		return err
-	}
-
-	return nil
+	// run http.server
+	return s.server.ListenAndServe()
 }

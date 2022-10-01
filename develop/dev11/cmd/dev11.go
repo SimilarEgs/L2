@@ -39,21 +39,34 @@ import (
 	"dev11/internal/app"
 	"dev11/internal/repository"
 	"log"
+	"os"
 )
 
 func main() {
+
+	// setup log file
+	file, err := os.OpenFile("log.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.SetOutput(file)
 
 	config, err := config.ParseConfig()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	server := app.Server{Events: *repository.NewEventStorage()}
+	events := repository.NewEventStorage()
+	app.InitRoutes(events)
 
-	server.Run(config)
+	server := app.NewServer(config)
 
+	log.Println("[Info] starting server...")
+
+	err = server.Run()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("[Error] %v\n", err)
 	}
 
 }

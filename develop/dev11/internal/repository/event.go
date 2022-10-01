@@ -11,6 +11,7 @@ import (
 type EventStorage struct {
 	sync.RWMutex // provide concurrent access to events storage
 	events       map[int]models.Event
+	eventsID     int
 }
 
 // NewEventStorage func - returns a new initialized EventStorage instance
@@ -19,13 +20,6 @@ func NewEventStorage() *EventStorage {
 		events: make(map[int]models.Event),
 	}
 }
-
-// POST /create_event
-// POST /update_event
-// POST /delete_event
-// GET /events_for_day
-// GET /events_for_week
-// GET /events_for_month
 
 // createEvent func - adds new event to the event storage
 func (e *EventStorage) CreateEvent(event *models.Event) error {
@@ -41,6 +35,7 @@ func (e *EventStorage) CreateEvent(event *models.Event) error {
 
 	// create new event
 	e.events[event.EventID] = *event
+	e.eventsID++
 
 	return nil
 }
@@ -159,8 +154,4 @@ func (e *EventStorage) GetEvenstForMonth(userId int, date time.Month) ([]models.
 	}
 
 	return res, nil
-}
-
-func (e *EventStorage) Print() {
-	fmt.Println(e.events)
 }
