@@ -5,12 +5,13 @@ import (
 	"net/http"
 )
 
+// Server struct - representation of http.Server
 type Server struct {
 	server *http.Server
-	cfg config.Config
+	cfg    config.Config
 }
 
-// NewServer func -
+// NewServer func - returns server struct
 func NewServer(config *config.Config) *Server {
 	return &Server{cfg: *config}
 }

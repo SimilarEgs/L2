@@ -62,11 +62,11 @@ func main() {
 
 	server := app.NewServer(config)
 
-	log.Println("[Info] starting server...")
+	log.Print("[Info] starting server...")
 
 	err = server.Run()
 	if err != nil {
-		log.Fatalf("[Error] %v\n", err)
+		log.Fatalf("[Error] %v", err)
 	}
 
 }

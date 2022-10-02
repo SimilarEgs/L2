@@ -4,10 +4,9 @@ import "time"
 
 // Event struct - representation of event entity with all its inherent fields
 type Event struct {
-	EventID int    `json:"event_id"`
-	UserID  int    `json:"user_id"`
-	Title   string `json:"title"`
-	Date    Date   `json:"date"`
+	EventID int  `json:"event_id"`
+	UserID  int  `json:"user_id"`
+	Date    Date `json:"date"`
 }
 
 // Date struct - subsidiary strucg for event fields, which store data about event date

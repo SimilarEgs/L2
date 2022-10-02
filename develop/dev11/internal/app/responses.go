@@ -1,10 +1,21 @@
 package app
 
 import (
+	"dev11/internal/models"
 	"encoding/json"
 	"fmt"
 	"net/http"
 )
+
+// Error representation for the client response
+type errorResponse struct {
+	Error string `json:"error"`
+}
+
+// Result representation for the client response
+type resultResponse struct {
+	Result []models.Event `json:"result"`
+}
 
 // JSON func - a wrapper for json response to client, that response statuscode and resualt
 func JSON(w http.ResponseWriter, statuscode int, data interface{}) {

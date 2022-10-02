@@ -9,7 +9,7 @@ import (
 type EventService interface {
 	CreateEvent(event *models.Event) error
 	UpdateEvent(event *models.Event) error
-	DeleteEvent(eventID int) error
+	DeleteEvent(userdID, eventID int) error
 	GetEvenstForDay(userId int, date int) ([]models.Event, error)
 	GetEvenstForWeek(userId int, date time.Time) ([]models.Event, error)
 	GetEvenstForMonth(userId int, date time.Month) ([]models.Event, error)

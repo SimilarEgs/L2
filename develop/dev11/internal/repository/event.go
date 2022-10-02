@@ -11,7 +11,7 @@ import (
 type EventStorage struct {
 	sync.RWMutex // provide concurrent access to events storage
 	events       map[int]models.Event
-	eventsID     int
+	idCount      int
 }
 
 // NewEventStorage func - returns a new initialized EventStorage instance
@@ -30,12 +30,13 @@ func (e *EventStorage) CreateEvent(event *models.Event) error {
 
 	// check if event is already exists => if ture, return error
 	if _, ok := e.events[event.EventID]; ok {
-		return fmt.Errorf("[Error] event with ID - %d already exists\n", event.EventID)
+		return fmt.Errorf("[Error] event with ID - %d already exists", event.EventID)
 	}
 
 	// create new event
+	e.idCount++
+	event.EventID = e.idCount
 	e.events[event.EventID] = *event
-	e.eventsID++
 
 	return nil
 }
@@ -49,7 +50,7 @@ func (e *EventStorage) UpdateEvent(event *models.Event) error {
 
 	// check if event is doesn't exists => if ture, return error
 	if _, ok := e.events[event.EventID]; !ok {
-		return fmt.Errorf("[Error] event with ID - %d doesn't exists\n", event.EventID)
+		return fmt.Errorf("[Error] event with ID - %d doesn't exists", event.EventID)
 	}
 
 	// updating the event
@@ -59,7 +60,7 @@ func (e *EventStorage) UpdateEvent(event *models.Event) error {
 }
 
 // deleteEvent func - delete event in the event storage
-func (e *EventStorage) DeleteEvent(eventID int) error {
+func (e *EventStorage) DeleteEvent(userID, eventID int) error {
 
 	// protect for concurrent access
 	e.Lock()
@@ -67,13 +68,19 @@ func (e *EventStorage) DeleteEvent(eventID int) error {
 
 	// check if event is doesn't exists => if ture, return error
 	if _, ok := e.events[eventID]; !ok {
-		return fmt.Errorf("[Error] event with ID - %d doesn't exists\n", eventID)
+		return fmt.Errorf("[Error] event with ID - %d doesn't exists", eventID)
 	}
 
-	// delete event with provided ID
-	delete(e.events, eventID)
+	// traversing through events to find one we need to delete
+	for _, event := range e.events {
+		if event.UserID == userID {
+			// delete event with provided ID
+			delete(e.events, eventID)
+			return nil
+		}
+	}
 
-	return nil
+	return fmt.Errorf("[Error] event with ID - %d doesn't exists", eventID)
 }
 
 // getEvenstForDay func - returns all events in the event storage that match the given date(day)
@@ -154,4 +161,8 @@ func (e *EventStorage) GetEvenstForMonth(userId int, date time.Month) ([]models.
 	}
 
 	return res, nil
+}
+
+func (e *EventStorage) Print() {
+	fmt.Println(e.events)
 }
