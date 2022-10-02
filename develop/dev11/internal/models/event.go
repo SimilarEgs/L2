@@ -13,3 +13,17 @@ type Event struct {
 type Date struct {
 	time.Time
 }
+
+// UnmarshalJSON func - implementing json.Unmarshaler interface
+func (d *Date) UnmarshalJSON(date []byte) error {
+
+	if string(date) == "" || string(date) == `""` {
+		*d = Date{time.Now()}
+		return nil
+	}
+
+	t, err := time.Parse(`"`+"2006-01-02"+`"`, string(date))
+	*d = Date{t}
+
+	return err
+}

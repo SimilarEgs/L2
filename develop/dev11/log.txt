@@ -257,3 +257,9 @@
 2022/10/02 12:33:19 [Info] event with ID was 5 - created
 2022/10/02 12:33:25 [Info] request method: GET | URI: /events_for_month?user_id=1&date=2022-11-01
 2022/10/02 12:33:25 [Info] client with ID - 1 retrived 2 event(s)
+2022/10/02 12:49:51 [Info] starting server...
+2022/10/02 12:49:55 [Info] request method: POST | URI: /create_event
+2022/10/02 12:49:55 parsing time "\"2022-11-30\"" as "\"2006-01-02T15:04:05Z07:00\"": cannot parse "\"" as "T"
+2022/10/02 12:50:25 [Info] starting server...
+2022/10/02 12:50:27 [Info] request method: POST | URI: /create_event
+2022/10/02 12:50:27 [Info] event with ID was 1 - created
