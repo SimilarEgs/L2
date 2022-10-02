@@ -9,7 +9,7 @@ type Event struct {
 	Date    Date `json:"date"`
 }
 
-// Date struct - subsidiary strucg for event fields, which store data about event date
+// Date struct - subsidiary struct for event fields, which store data about event date
 type Date struct {
 	time.Time
 }

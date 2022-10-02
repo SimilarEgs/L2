@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-// EventStorage struct - structure in which the event entity, containing users events is stored
+// EventStorage struct - structure in which the event entity stored
 type EventStorage struct {
 	sync.RWMutex // provide concurrent access to events storage
 	events       map[int]models.Event
@@ -161,8 +161,4 @@ func (e *EventStorage) GetEvenstForMonth(userId int, date time.Month) ([]models.
 	}
 
 	return res, nil
-}
-
-func (e *EventStorage) Print() {
-	fmt.Println(e.events)
 }

@@ -9,10 +9,12 @@ import (
 	"github.com/spf13/viper"
 )
 
+// Config struct - contains config of the program
 type Config struct {
 	HTTP
 }
 
+// HTTP struct - contains config of the HTTP server
 type HTTP struct {
 	Host         string
 	Port         string

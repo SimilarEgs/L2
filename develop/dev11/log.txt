@@ -1,0 +1,259 @@
+2022/10/02 10:50:59 [Info] starting server...
+2022/10/02 10:51:05 [Info] request method: POST | URI: /update_event
+2022/10/02 10:51:05 [Error] event with ID - 1 doesn't exists
+2022/10/02 10:55:24 [Info] starting server...
+2022/10/02 10:55:29 [Info] request method: POST | URI: /create_event
+2022/10/02 10:55:29 [Info] event with ID was 1 - created
+2022/10/02 10:56:08 [Info] request method: GET | URI: /delete_event
+2022/10/02 10:56:08 [Error] invalid request method: GET
+2022/10/02 10:56:30 [Info] request method: POST | URI: /delete_event
+2022/10/02 10:56:30 [Info] event with ID was 1 - deleted
+2022/10/02 10:56:39 [Info] request method: POST | URI: /update_event
+2022/10/02 10:56:39 [Error] event with ID - 1 doesn't exists
+2022/10/02 10:56:45 [Info] request method: POST | URI: /delete_event
+2022/10/02 10:56:45 [Info] event with ID was 1 - deleted
+2022/10/02 10:56:56 [Info] request method: POST | URI: /create_event
+2022/10/02 10:56:56 [Info] event with ID was 2 - created
+2022/10/02 10:57:06 [Info] request method: POST | URI: /update_event
+2022/10/02 10:57:06 [Info] event with ID was 2 - updated
+2022/10/02 10:57:10 [Info] request method: POST | URI: /delete_event
+2022/10/02 10:57:10 [Info] event with ID was 1 - deleted
+2022/10/02 10:57:16 [Info] request method: POST | URI: /delete_event
+2022/10/02 10:57:16 [Info] event with ID was 2 - deleted
+2022/10/02 10:57:18 [Info] request method: POST | URI: /update_event
+2022/10/02 10:57:18 [Error] event with ID - 2 doesn't exists
+2022/10/02 10:58:11 [Info] request method: POST | URI: /delete_event
+2022/10/02 10:58:11 [Info] event with ID was 1243 - deleted
+2022/10/02 10:58:24 [Info] starting server...
+2022/10/02 10:58:25 [Info] request method: POST | URI: /delete_event
+2022/10/02 10:58:25 [Info] event with ID was 1243 - deleted
+2022/10/02 10:58:29 [Info] request method: POST | URI: /delete_event
+2022/10/02 10:58:29 [Info] event with ID was 1243 - deleted
+2022/10/02 10:59:17 [Info] starting server...
+2022/10/02 10:59:18 [Info] request method: POST | URI: /delete_event
+2022/10/02 10:59:18 [Info] event with ID was 1243 - deleted
+2022/10/02 10:59:46 [Info] request method: POST | URI: /create_event
+2022/10/02 10:59:46 [Info] event with ID was 1 - created
+2022/10/02 10:59:48 [Info] request method: POST | URI: /create_event
+2022/10/02 10:59:48 [Info] event with ID was 2 - created
+2022/10/02 10:59:48 [Info] request method: POST | URI: /create_event
+2022/10/02 10:59:48 [Info] event with ID was 3 - created
+2022/10/02 10:59:53 [Info] request method: POST | URI: /delete_event
+2022/10/02 10:59:53 [Info] event with ID was 1243 - deleted
+2022/10/02 10:59:55 [Info] request method: POST | URI: /delete_event
+2022/10/02 10:59:55 [Info] event with ID was 1243 - deleted
+2022/10/02 11:00:01 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:00:01 [Error] event with ID - 1243 doesn't exists
+2022/10/02 11:00:02 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:00:02 [Error] event with ID - 1243 doesn't exists
+2022/10/02 11:00:40 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:00:40 [Error] event with ID - 1243 doesn't exists
+2022/10/02 11:00:47 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:00:47 [Error] event with ID - 1 doesn't exists
+2022/10/02 11:00:59 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:00:59 [Info] event with ID was 1 - deleted
+2022/10/02 11:01:00 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:01:00 [Info] event with ID was 1 - deleted
+2022/10/02 11:01:01 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:01:01 [Info] event with ID was 1 - deleted
+2022/10/02 11:01:01 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:01:01 [Info] event with ID was 1 - deleted
+2022/10/02 11:01:04 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:01:04 [Info] event with ID was 1 - deleted
+2022/10/02 11:01:09 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:01:09 [Info] event with ID was 12 - deleted
+2022/10/02 11:01:10 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:01:10 [Info] event with ID was 12 - deleted
+2022/10/02 11:01:14 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:01:14 [Info] event with ID was 123 - deleted
+2022/10/02 11:01:18 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:01:18 [Error] event with ID - 123 doesn't exists
+2022/10/02 11:08:53 [Info] starting server...
+2022/10/02 11:09:10 [Info] request method: POST | URI: /create_event
+2022/10/02 11:09:10 [Info] event with ID was 1 - created
+2022/10/02 11:09:13 [Info] request method: POST | URI: /update_event
+2022/10/02 11:09:13 [Error] event with ID - 2 doesn't exists
+2022/10/02 11:09:18 [Info] request method: POST | URI: /update_event
+2022/10/02 11:09:18 [Info] event with ID was 1 - updated
+2022/10/02 11:09:23 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:09:23 [Error] event with ID - 123 doesn't exists
+2022/10/02 11:09:30 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:09:30 [Error] event with ID - 1230 doesn't exists
+2022/10/02 11:09:34 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:09:34 [Error] event with ID - 1230 doesn't exists
+2022/10/02 11:09:38 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:09:38 [Info] event with ID was 1 - deleted
+2022/10/02 11:09:40 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:09:40 [Error] event with ID - 1 doesn't exists
+2022/10/02 11:09:48 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:09:48 [Error] event with ID - 1 doesn't exists
+2022/10/02 11:09:54 [Info] request method: POST | URI: /create_event
+2022/10/02 11:09:54 [Info] event with ID was 2 - created
+2022/10/02 11:09:58 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:09:58 [Error] event with ID - 1 doesn't exists
+2022/10/02 11:10:02 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:10:02 [Info] event with ID was 2 - deleted
+2022/10/02 11:11:41 [Info] starting server...
+2022/10/02 11:11:43 [Info] request method: POST | URI: /create_event
+2022/10/02 11:11:43 [Info] event with ID was 1 - created
+2022/10/02 11:11:47 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:11:47 [Error] event with ID - 2 doesn't exists
+2022/10/02 11:11:51 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:11:51 [Info] event with ID was 1 - deleted
+2022/10/02 11:11:59 [Info] request method: POST | URI: /delete_event
+2022/10/02 11:11:59 [Error] event with ID - 1 doesn't exists
+2022/10/02 11:53:35 [Info] starting server...
+2022/10/02 11:55:32 [Info] request method: GET | URI: /events_for_day?user_id=1&date=2022-10-02
+2022/10/02 11:59:50 [Info] starting server...
+2022/10/02 11:59:54 [Info] request method: GET | URI: /events_for_day?user_id=1&date=2022-10-02
+2022/10/02 12:00:46 [Info] request method: POST | URI: /create_event
+2022/10/02 12:00:46 [Info] event with ID was 1 - created
+2022/10/02 12:00:52 [Info] request method: POST | URI: /create_event
+2022/10/02 12:00:52 [Info] event with ID was 2 - created
+2022/10/02 12:00:58 [Info] request method: POST | URI: /create_event
+2022/10/02 12:00:58 [Info] event with ID was 3 - created
+2022/10/02 12:01:04 [Info] request method: GET | URI: /events_for_day?user_id=1&date=2022-10-02
+2022/10/02 12:01:35 [Info] starting server...
+2022/10/02 12:01:51 [Info] request method: GET | URI: /events_for_day?user_id=1&date=2022-10-02
+2022/10/02 12:02:08 [Info] request method: POST | URI: /create_event
+2022/10/02 12:02:08 [Info] event with ID was 1 - created
+2022/10/02 12:02:23 [Info] request method: GET | URI: /events_for_day?user_id=1&date=2022-12-02
+2022/10/02 12:06:35 [Info] starting server...
+2022/10/02 12:06:39 [Info] request method: POST | URI: /create_event
+2022/10/02 12:06:39 [Info] event with ID was 1 - created
+2022/10/02 12:06:47 [Info] request method: POST | URI: /create_event
+2022/10/02 12:06:47 [Info] event with ID was 2 - created
+2022/10/02 12:06:52 [Info] request method: POST | URI: /create_event
+2022/10/02 12:06:52 [Info] event with ID was 3 - created
+2022/10/02 12:06:59 [Info] request method: GET | URI: /events_for_day?user_id=1&date=2022-12-02
+2022/10/02 12:07:26 [Info] starting server...
+2022/10/02 12:07:28 [Info] request method: POST | URI: /create_event
+2022/10/02 12:07:28 [Info] event with ID was 1 - created
+2022/10/02 12:07:34 [Info] request method: POST | URI: /create_event
+2022/10/02 12:07:34 [Info] event with ID was 2 - created
+2022/10/02 12:07:34 [Info] request method: POST | URI: /create_event
+2022/10/02 12:07:34 [Info] event with ID was 3 - created
+2022/10/02 12:07:35 [Info] request method: POST | URI: /create_event
+2022/10/02 12:07:35 [Info] event with ID was 4 - created
+2022/10/02 12:07:36 [Info] request method: POST | URI: /create_event
+2022/10/02 12:07:36 [Info] event with ID was 5 - created
+2022/10/02 12:07:39 [Info] request method: GET | URI: /events_for_day?user_id=1&date=2022-12-02
+2022/10/02 12:07:52 [Info] starting server...
+2022/10/02 12:07:54 [Info] request method: POST | URI: /create_event
+2022/10/02 12:07:54 [Info] event with ID was 1 - created
+2022/10/02 12:07:54 [Info] request method: POST | URI: /create_event
+2022/10/02 12:07:54 [Info] event with ID was 2 - created
+2022/10/02 12:07:55 [Info] request method: POST | URI: /create_event
+2022/10/02 12:07:55 [Info] event with ID was 3 - created
+2022/10/02 12:07:55 [Info] request method: POST | URI: /create_event
+2022/10/02 12:07:55 [Info] event with ID was 4 - created
+2022/10/02 12:07:58 [Info] request method: GET | URI: /events_for_day?user_id=1&date=2022-12-02
+2022/10/02 12:08:16 [Info] request method: POST | URI: /create_event
+2022/10/02 12:08:16 [Info] event with ID was 5 - created
+2022/10/02 12:08:16 [Info] request method: POST | URI: /create_event
+2022/10/02 12:08:16 [Info] event with ID was 6 - created
+2022/10/02 12:08:17 [Info] request method: POST | URI: /create_event
+2022/10/02 12:08:17 [Info] event with ID was 7 - created
+2022/10/02 12:08:19 [Info] request method: GET | URI: /events_for_day?user_id=1&date=2022-12-02
+2022/10/02 12:08:29 [Info] request method: GET | URI: /events_for_day?user_id=2&date=2022-12-02
+2022/10/02 12:12:14 [Info] starting server...
+2022/10/02 12:12:21 [Info] request method: POST | URI: /create_event
+2022/10/02 12:12:21 [Info] event with ID was 1 - created
+2022/10/02 12:12:21 [Info] request method: POST | URI: /create_event
+2022/10/02 12:12:21 [Info] event with ID was 2 - created
+2022/10/02 12:12:22 [Info] request method: POST | URI: /create_event
+2022/10/02 12:12:22 [Info] event with ID was 3 - created
+2022/10/02 12:12:23 [Info] request method: POST | URI: /create_event
+2022/10/02 12:12:23 [Info] event with ID was 4 - created
+2022/10/02 12:12:23 [Info] request method: POST | URI: /create_event
+2022/10/02 12:12:23 [Info] event with ID was 5 - created
+2022/10/02 12:12:26 [Info] request method: GET | URI: /events_for_day?user_id=2&date=2022-12-02
+2022/10/02 12:12:26 [Info] result was not found for the entered day
+2022/10/02 12:13:03 [Info] request method: GET | URI: /events_for_day?user_id=1&date=2022-12-02
+2022/10/02 12:13:03 [Info] client with ID - 1 retrived 5 event(s)
+2022/10/02 12:13:28 [Info] request method: POST | URI: /delete_event
+2022/10/02 12:13:28 [Info] event with ID was 1 - deleted
+2022/10/02 12:13:30 [Info] request method: POST | URI: /delete_event
+2022/10/02 12:13:30 [Error] event with ID - 1 doesn't exists
+2022/10/02 12:13:32 [Info] request method: GET | URI: /events_for_day?user_id=1&date=2022-12-02
+2022/10/02 12:13:32 [Info] client with ID - 1 retrived 4 event(s)
+2022/10/02 12:19:36 [Info] starting server...
+2022/10/02 12:21:45 [Info] request method: POST | URI: /create_event
+2022/10/02 12:21:45 [Info] event with ID was 1 - created
+2022/10/02 12:21:55 [Info] request method: POST | URI: /create_event
+2022/10/02 12:21:55 [Info] event with ID was 2 - created
+2022/10/02 12:24:55 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-12-02
+2022/10/02 12:24:55 [Info] result was not found for the entered week
+2022/10/02 12:25:12 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-10-03
+2022/10/02 12:25:12 [Info] result was not found for the entered week
+2022/10/02 12:25:20 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-10
+2022/10/02 12:25:20 [Error] incorrect time format: GET
+2022/10/02 12:25:28 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-10-03
+2022/10/02 12:25:28 [Info] result was not found for the entered week
+2022/10/02 12:25:37 [Info] request method: POST | URI: /create_event
+2022/10/02 12:25:37 [Info] event with ID was 3 - created
+2022/10/02 12:25:40 [Info] request method: GET | URI: /events_for_day?user_id=1&date=2022-12-02
+2022/10/02 12:25:40 [Info] client with ID - 1 retrived 2 event(s)
+2022/10/02 12:25:50 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-10-02
+2022/10/02 12:25:50 [Info] client with ID - 1 retrived 2 event(s)
+2022/10/02 12:25:58 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-10-03
+2022/10/02 12:25:58 [Info] client with ID - 1 retrived 1 event(s)
+2022/10/02 12:26:10 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-10-26
+2022/10/02 12:26:10 [Info] result was not found for the entered week
+2022/10/02 12:26:17 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-10-1
+2022/10/02 12:26:17 [Error] incorrect time format: GET
+2022/10/02 12:26:20 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-10-01
+2022/10/02 12:26:20 [Info] client with ID - 1 retrived 2 event(s)
+2022/10/02 12:26:31 [Info] request method: POST | URI: /create_event
+2022/10/02 12:26:31 [Info] event with ID was 4 - created
+2022/10/02 12:26:32 [Info] request method: POST | URI: /create_event
+2022/10/02 12:26:32 [Info] event with ID was 5 - created
+2022/10/02 12:26:33 [Info] request method: POST | URI: /create_event
+2022/10/02 12:26:33 [Info] event with ID was 6 - created
+2022/10/02 12:26:33 [Info] request method: POST | URI: /create_event
+2022/10/02 12:26:33 [Info] event with ID was 7 - created
+2022/10/02 12:26:34 [Info] request method: POST | URI: /create_event
+2022/10/02 12:26:34 [Info] event with ID was 8 - created
+2022/10/02 12:26:34 [Info] request method: POST | URI: /create_event
+2022/10/02 12:26:34 [Info] event with ID was 9 - created
+2022/10/02 12:26:37 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-10-01
+2022/10/02 12:26:37 [Info] client with ID - 1 retrived 8 event(s)
+2022/10/02 12:26:47 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-10-10
+2022/10/02 12:26:47 [Info] result was not found for the entered week
+2022/10/02 12:26:50 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-10-09
+2022/10/02 12:26:50 [Info] client with ID - 1 retrived 1 event(s)
+2022/10/02 12:26:53 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-10-01
+2022/10/02 12:26:53 [Info] client with ID - 1 retrived 8 event(s)
+2022/10/02 12:31:41 [Info] starting server...
+2022/10/02 12:32:04 [Info] request method: POST | URI: /create_event
+2022/10/02 12:32:04 [Info] event with ID was 1 - created
+2022/10/02 12:32:04 [Info] request method: POST | URI: /create_event
+2022/10/02 12:32:04 [Info] event with ID was 2 - created
+2022/10/02 12:32:05 [Info] request method: POST | URI: /create_event
+2022/10/02 12:32:05 [Info] event with ID was 3 - created
+2022/10/02 12:32:09 [Info] request method: POST | URI: /create_event
+2022/10/02 12:32:09 [Info] event with ID was 4 - created
+2022/10/02 12:32:11 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-10-01
+2022/10/02 12:32:11 [Info] client with ID - 1 retrived 3 event(s)
+2022/10/02 12:32:16 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-11-01
+2022/10/02 12:32:16 [Info] client with ID - 1 retrived 1 event(s)
+2022/10/02 12:32:20 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-14-01
+2022/10/02 12:32:20 [Error] incorrect time format: GET
+2022/10/02 12:32:25 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-15-01
+2022/10/02 12:32:25 [Error] incorrect time format: GET
+2022/10/02 12:32:29 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-11-01
+2022/10/02 12:32:29 [Info] client with ID - 1 retrived 1 event(s)
+2022/10/02 12:32:32 [Info] request method: GET | URI: /events_for_week?user_id=1&date=2022-12-01
+2022/10/02 12:32:32 [Info] result was not found for the entered week
+2022/10/02 12:32:59 [Info] request method: GET | URI: /events_for_month?user_id=1&date=2022-12-01
+2022/10/02 12:32:59 [Info] result was not found for the entered month
+2022/10/02 12:33:06 [Info] request method: GET | URI: /events_for_month?user_id=1&date=2022-11-01
+2022/10/02 12:33:06 [Info] client with ID - 1 retrived 1 event(s)
+2022/10/02 12:33:09 [Info] request method: GET | URI: /events_for_month?user_id=1&date=2022-12-01
+2022/10/02 12:33:09 [Info] result was not found for the entered month
+2022/10/02 12:33:13 [Info] request method: GET | URI: /events_for_month?user_id=1&date=2022-10-01
+2022/10/02 12:33:13 [Info] client with ID - 1 retrived 3 event(s)
+2022/10/02 12:33:19 [Info] request method: POST | URI: /create_event
+2022/10/02 12:33:19 [Info] event with ID was 5 - created
+2022/10/02 12:33:25 [Info] request method: GET | URI: /events_for_month?user_id=1&date=2022-11-01
+2022/10/02 12:33:25 [Info] client with ID - 1 retrived 2 event(s)
