@@ -4,6 +4,8 @@ import (
 	"log"
 )
 
+// Chain Of Responsibility:
+//
 // Это поведенчекский паттерн проектирования, который позволяет нам передавать запросы по цепочке обработчиков.
 // Получив запрос, каждый обработчик решает: либо обработать запрос, либо передать его по цепочке далее, следующему обработчику
 //
@@ -26,6 +28,10 @@ import (
 // Устройсво паттерна:
 // · Общий интерфейс для все обработчиков - в основном содержит один метод для обработки запросов и еще один метод для передачи следующему обработчику по цепочке
 // · Обработчик - содержит логику обработки запроса. Получив запрос, каждый обработчик решает, обрабатывать его или передавать по цепочке
+//
+// Цели использования:
+// - Инкапсулировать и обернуть какое-либо действие/информацию в небольшой пакет, чтобы воспользоваться им где бы то ни было
+
 
 type Data struct {
 	packageDone bool
@@ -33,18 +39,18 @@ type Data struct {
 	shadersDone bool
 }
 
-type Responsability interface {
+type Responsibility interface {
 	Download(*Data)
-	setNext(Responsability)
+	setNext(Responsibility)
 }
 
 func main() {
 
 	data := Data{}
-	packages := &PackagesResponsability{}
-	cache := &CacheResponsability{}
-	shaders := &ShadersResponsability{}
-	final := &FinalStageResponsability{}
+	packages := &PackagesResponsibility{}
+	cache := &CacheResponsibility{}
+	shaders := &ShadersResponsibility{}
+	final := &FinalStageResponsibility{}
 	packages.setNext(cache)
 	cache.setNext(shaders)
 	shaders.setNext(final)
@@ -57,11 +63,11 @@ func main() {
 
 }
 
-type PackagesResponsability struct {
-	next Responsability
+type PackagesResponsibility struct {
+	next Responsibility
 }
 
-func (p *PackagesResponsability) Download(data *Data) {
+func (p *PackagesResponsibility) Download(data *Data) {
 
 	if data.packageDone {
 		log.Println("[Info] packages loaded successfully")
@@ -75,15 +81,15 @@ func (p *PackagesResponsability) Download(data *Data) {
 
 }
 
-func (p *PackagesResponsability) setNext(next Responsability) {
+func (p *PackagesResponsibility) setNext(next Responsibility) {
 	p.next = next
 }
 
-type CacheResponsability struct {
-	next Responsability
+type CacheResponsibility struct {
+	next Responsibility
 }
 
-func (c *CacheResponsability) Download(data *Data) {
+func (c *CacheResponsibility) Download(data *Data) {
 
 	if data.cacheDone {
 		log.Println("[Info] cache loaded successfully")
@@ -96,15 +102,15 @@ func (c *CacheResponsability) Download(data *Data) {
 	c.next.Download(data)
 }
 
-func (c *CacheResponsability) setNext(next Responsability) {
+func (c *CacheResponsibility) setNext(next Responsibility) {
 	c.next = next
 }
 
-type ShadersResponsability struct {
-	next Responsability
+type ShadersResponsibility struct {
+	next Responsibility
 }
 
-func (s *ShadersResponsability) Download(data *Data) {
+func (s *ShadersResponsibility) Download(data *Data) {
 
 	if data.shadersDone {
 		log.Println("[Info] shaders loaded successfully")
@@ -117,18 +123,18 @@ func (s *ShadersResponsability) Download(data *Data) {
 	s.next.Download(data)
 }
 
-func (s *ShadersResponsability) setNext(next Responsability) {
+func (s *ShadersResponsibility) setNext(next Responsibility) {
 	s.next = next
 }
 
-type FinalStageResponsability struct {
-	next Responsability
+type FinalStageResponsibility struct {
+	next Responsibility
 }
 
-func (f *FinalStageResponsability) Download(data *Data) {
+func (f *FinalStageResponsibility) Download(data *Data) {
 	log.Println("[Info] all data was successfully download")
 }
 
-func (f *FinalStageResponsability) setNext(next Responsability) {
+func (f *FinalStageResponsibility) setNext(next Responsibility) {
 	f.next = next
 }
