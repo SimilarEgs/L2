@@ -41,13 +41,13 @@ import "fmt"
 //  Конкретая стратегии - сложение, вычитание, деление и т.д
 //  Контекст - калькулятор
 //
-                                                           
-				      «interface»	     | strategy 1  |
-  |  Context   |     strategy       |  Strategy   |          | algorithm() |
-  |------------|  ----------------> |-----------  |  <-------|/////////////|
-  | operation()|                    | algorithm() |	     |
-                                                             | strategy 2  | 
-							     | algorithm() |
+//                                                           
+//   				       «interface»	      | strategy 1  |
+// |  Context   |     strategy       |  Strategy   |          | algorithm() |
+// |------------|  ----------------> |-----------  | <--------|/////////////|
+// | operation()|                    | algorithm() |	      |
+//                                                            | strategy 2  | 
+//							      | algorithm() |
 
 type Authorization interface {
 	Auth() error
