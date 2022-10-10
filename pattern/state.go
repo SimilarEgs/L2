@@ -39,12 +39,12 @@ func NewMP3Player(state PlayerState) *MP3Player {
 }
 
 func (p *MP3Player) SetState(state PlayerState) {
+	// меняем текущее состояние
 	p.state = state
 }
 
-
 func (pl *MP3Player) PressButton() {
-	// переключаем состояние  
+	// вызываем метод текущего состояния
 	pl.state.Handle(pl)
 }
 
